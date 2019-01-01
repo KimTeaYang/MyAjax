@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ajax.book.BookMapper">
+	<select id="allBooks" resultType="ajax.book.BookVO">
+		select * from book order by isbn asc
+	</select>
+	
+	<!-- config.xml에서 alias : Book =>ajax.book.BookVO -->
+	<select id="selectBook" parameterType="string" resultType="Book"> 
+		select * from book where isbn = #{isbn}
+	</select>
+	
+	<!-- isbn으로 도서정보 삭제 -->
+	<select id="deleteBook" parameterType="java.lang.String" resultType="int" >
+		delete from book where isbn = #{isbn}
+	</select>
+	
+	<select id="updateBook" parameterType="Book" resultType="int">
+		update book set title=#{title}, publish=#{publish}, price=#{price} where isbn=#{isbn}
+	</select>
+	
+	<select id="pubList" resultType="java.lang.String">
+		select distinct publish from book order by publish asc
+	</select>
+	
+	<select id="titList" resultType="java.lang.String">
+		select title from book where publish = #{publish}
+	</select>
+	
+	<select id="search" parameterType="java.util.Map" resultType="Book">
+		select * from book where title=#{title}
+	</select>
+	
+	<select id="searchName" parameterType="java.lang.String" resultType="Book">
+		select * from book where upper(title) like '%'||#{books}||'%'
+	</select>
+</mapper>
