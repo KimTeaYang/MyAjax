@@ -125,7 +125,6 @@
 						<td>√‚∆«¿œ</td>
 						<td><input type="text" name="published" id="published"
 							disabled class="form-control"></td>
-
 					</tr>
 					<tr>
 						<td colspan="2">

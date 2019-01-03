@@ -17,7 +17,6 @@ public class BookVO implements Serializable {
 			Timestamp published, String bimage) {
 		super();
 		this.isbn = isbn;
-		System.out.println("this.isbn="+this.isbn);
 		this.title = title;
 		this.publish = publish;
 		this.price = price;
